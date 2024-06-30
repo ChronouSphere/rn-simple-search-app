@@ -1,3 +1,42 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": false,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "jsx": "react-native",
+    "lib": ["es2021"],
+    "moduleResolution": "node",
+    "moduleSuffixes": [
+      ".ios", // if you use both extensions for a given module, ts will select .ios as the default
+      ".android",
+      ""
+    ],
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "./",
+    "pretty": false,
+    "rootDir": "./",
+    "strictNullChecks": true,
+    "target": "es2021",
+    // target doesnt matter as ts files are transpilled by babel which doesnt use tsconfig; https://github.com/babel/babel/issues/9028
+    // but it matters for the scripts ran with ts-node
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "incremental": true,
+    "tsBuildInfoFile": "cache/tsconfig.tsbuildinfo"
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }
