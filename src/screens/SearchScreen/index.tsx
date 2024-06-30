@@ -48,6 +48,7 @@ const SearchScreen = (): React.JSX.Element => {
       return () => {
         // Reset the query and dispatch reset action when the screen is unfocused
         setQuery('');
+        dispatch(organizationListAction.searchItemReset());
       };
     }, [dispatch]),
   );

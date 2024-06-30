@@ -54,6 +54,21 @@ function* searchFetchApiRuntime() {
   }
 }
 
+function* searchResetRuntime() {
+  while (true) {
+    yield take(organizationListAction.searchItemReset);
+    yield put(
+      organizationListAction.searchSuccessRequestFetchApi({
+        listItems: [], // reset use success to standardize lifecyle
+      }),
+    );
+  }
+}
+
 export default function* allRuntimes() {
-  yield all([call(fetchApiRuntime), call(searchFetchApiRuntime)]);
+  yield all([
+    call(fetchApiRuntime),
+    call(searchFetchApiRuntime),
+    call(searchResetRuntime),
+  ]);
 }
